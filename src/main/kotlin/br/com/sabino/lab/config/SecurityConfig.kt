@@ -1,6 +1,6 @@
 package br.com.sabino.lab.config
 
-import br.com.sabino.lab.restful.api.security.EmployeeDetailService
+import br.com.sabino.lab.api.api.security.EmployeeDetailService
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder

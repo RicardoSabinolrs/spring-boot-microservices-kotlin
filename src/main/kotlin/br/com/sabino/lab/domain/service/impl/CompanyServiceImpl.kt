@@ -1,8 +1,8 @@
 package br.com.sabino.lab.domain.service.impl
 
-import br.com.sabino.lab.restful.api.document.Company
-import br.com.sabino.lab.restful.api.repository.CompanyRepository
-import br.com.sabino.lab.restful.api.domain.service.CompanyService
+import br.com.sabino.lab.api.api.document.Company
+import br.com.sabino.lab.api.api.repository.CompanyRepository
+import br.com.sabino.lab.api.api.domain.service.CompanyService
 import org.springframework.stereotype.Service
 
 @Service

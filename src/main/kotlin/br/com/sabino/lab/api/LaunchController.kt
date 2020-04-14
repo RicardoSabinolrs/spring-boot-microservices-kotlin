@@ -1,12 +1,12 @@
 package com.kazale.pontointeligente.controllers
 
-import br.com.sabino.lab.restful.api.document.Employee
-import br.com.sabino.lab.restful.api.document.Launch
-import br.com.sabino.lab.restful.api.domain.enum.TypeLaunch
-import br.com.sabino.lab.restful.api.domain.model.LaunchModel
-import br.com.sabino.lab.restful.api.domain.service.EmployeeService
-import br.com.sabino.lab.restful.api.domain.service.LaunchService
-import br.com.sabino.lab.restful.api.response.Response
+import br.com.sabino.lab.api.api.document.Employee
+import br.com.sabino.lab.api.api.document.Launch
+import br.com.sabino.lab.api.api.domain.enum.TypeLaunch
+import br.com.sabino.lab.api.api.domain.model.LaunchModel
+import br.com.sabino.lab.api.api.domain.service.EmployeeService
+import br.com.sabino.lab.api.api.domain.service.LaunchService
+import br.com.sabino.lab.api.api.response.Response
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.PageRequest

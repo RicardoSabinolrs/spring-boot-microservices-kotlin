@@ -1,4 +1,4 @@
-package br.com.sabino.lab.restful.api.document
+package br.com.sabino.lab.api.api.document
 
 import org.springframework.data.annotation.Id
 import org.springframework.data.mongodb.core.mapping.Document

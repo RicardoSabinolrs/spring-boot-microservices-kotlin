@@ -1,7 +1,7 @@
-package br.com.sabino.lab.restful.api.security
+package br.com.sabino.lab.api.api.security
 
-import br.com.sabino.lab.restful.api.domain.service.EmployeeService
-import br.com.sabino.lab.restful.api.document.Employee
+import br.com.sabino.lab.api.api.domain.service.EmployeeService
+import br.com.sabino.lab.api.api.document.Employee
 import org.springframework.security.core.userdetails.UserDetails
 import org.springframework.security.core.userdetails.UserDetailsService
 import org.springframework.security.core.userdetails.UsernameNotFoundException

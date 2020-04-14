@@ -1,8 +1,8 @@
 package br.com.sabino.lab.domain.service.impl
 
-import br.com.sabino.lab.restful.api.document.Launch
-import br.com.sabino.lab.restful.api.domain.service.LaunchService
-import br.com.sabino.lab.restful.api.repository.LaunchRepository
+import br.com.sabino.lab.api.api.document.Launch
+import br.com.sabino.lab.api.api.domain.service.LaunchService
+import br.com.sabino.lab.api.api.repository.LaunchRepository
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.PageRequest
 import org.springframework.stereotype.Service

@@ -1,6 +1,6 @@
 package br.com.sabino.lab.domain.service
 
-import br.com.sabino.lab.restful.api.document.Company
+import br.com.sabino.lab.api.api.document.Company
 
 interface CompanyService {
     fun findByCnpj(cnpj: String): Company?

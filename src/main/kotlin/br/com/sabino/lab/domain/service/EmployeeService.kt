@@ -1,6 +1,6 @@
 package br.com.sabino.lab.domain.service
 
-import br.com.sabino.lab.restful.api.document.Employee
+import br.com.sabino.lab.api.api.document.Employee
 
 interface EmployeeService {
     fun persist(employee: Employee): Employee

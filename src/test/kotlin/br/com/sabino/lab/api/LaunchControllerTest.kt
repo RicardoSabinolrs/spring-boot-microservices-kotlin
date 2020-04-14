@@ -1,7 +1,7 @@
-package br.com.sabino.lab.controllers
+package br.com.sabino.lab.api
 
-import br.com.sabino.lab.restful.api.document.Employee
-import br.com.sabino.lab.restful.api.document.Launch
+import br.com.sabino.lab.api.api.document.Employee
+import br.com.sabino.lab.api.api.document.Launch
 import br.com.sabino.lab.domain.enum.Profile
 import br.com.sabino.lab.domain.enum.TypeLaunch
 import br.com.sabino.lab.domain.model.LaunchModel
