@@ -4,10 +4,10 @@
 
 :octocat: From the command line do:
 ```javascript
-$ git clone https://github.com/RicardoSabinolrs/restful-with-kotlin-mongodb.git
-$ cd restful-with-kotlin-mongodb/
+$ git clone https://github.com/RicardoSabinolrs/spring-boot-microservices-kotlin.git
+$ cd spring-boot-microservices-kotlin/
 $ ./gradlew build
-$ java -jar /build/libs/restful-with-kotlin-mongodb-app-1.0.jar
+$ java -jar /build/libs/spring-boot-microservices-kotlin-app-1.0.jar
 ```
 > You can access the API documentation via browser: http://localhost:8080/swagger-ui.html
 
