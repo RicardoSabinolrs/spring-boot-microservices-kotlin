@@ -66,8 +66,6 @@ If you need to re-run the Sonar phase, please be sure to specify at least the `i
 ./mvnw initialize sonar:sonar
 ```
 
-For more information, refer to the [Code quality page][].
-
 ## Using Docker to simplify development (optional)
 
 You can use Docker to improve your development experience. A number of docker-compose configuration are available in the [src/main/docker](docker) folder to launch required third party services.
