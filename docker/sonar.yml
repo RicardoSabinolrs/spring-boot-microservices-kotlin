@@ -1,0 +1,8 @@
+version: '3.8'
+services:
+  sabinolabs-sonar:
+    image: sonarqube:8.8-community
+    environment:
+      - sonar.forceAuthentication=false
+    ports:
+      - 127.0.0.1:9001:9000

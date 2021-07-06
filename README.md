@@ -1,32 +1,98 @@
-# Sabino -| Restful with Spring Boot, Kotlin and MongoDB :leaves:
+# Sabino -|Labs :leaves:
 
-## Quickstart
+This is a "microservice" application intended to be part of a microservice architecture.
 
-:octocat: From the command line do:
-```javascript
-$ git clone https://github.com/RicardoSabinolrs/spring-boot-microservices-kotlin.git
-$ cd spring-boot-microservices-kotlin/
-$ ./gradlew build
-$ java -jar /build/libs/spring-boot-microservices-kotlin-app-1.0.jar
+## Development
+
+To start your application in the dev profile, run:
+
 ```
-> You can access the API documentation via browser: http://localhost:8080/swagger-ui.html
+./mvnw
+```
 
-## Project description
+## Building for production
 
-The project uses:
+### Packaging as jar
 
-- [Kotlin](https://github.com/JetBrains/kotlin)
-- [Gradle](https://github.com/gradle/gradle)
-- [Spring Boot](https://github.com/spring-projects/spring-framework/tree/master/spring-context)
-- [Spring Data MongoDB](https://github.com/spring-projects/spring-data-mongodb)
-- [MongoDB](https://www.mongodb.com/)
-- [Lambok](https://github.com/rzwitserloot/lombok)
-- [Swagger](https://github.com/swagger-api)
-- [jUnit](https://github.com/junit-team/junit4)
-- [Mockito](https://github.com/mockito/mockito)
+To build the final jar and optimize the SabinoLabs application for production, run:
 
-Some techniques:
-- [Domain Driven Design](https://en.wikipedia.org/wiki/Domain-driven_design)
-- [Dependency Injection](https://en.wikipedia.org/wiki/Dependency_injection)
-- [TDD with Mocks and Stubs](https://en.wikipedia.org/wiki/Test-driven_development)
+```
+./mvnw -Pprod clean verify
+```
 
+To ensure everything worked, run:
+
+```
+java -jar target/*.jar
+```
+
+### Packaging as war
+
+To package your application as a war in order to deploy it to an application server, run:
+
+```
+./mvnw -Pprod,war clean verify
+```
+
+## Testing
+
+To launch your application's tests, run:
+
+```
+./mvnw verify
+```
+
+### Code quality
+
+Sonar is used to analyse code quality. You can start a local Sonar server (accessible on http://localhost:9001) with:
+
+```
+docker-compose -f src/main/docker/sonar.yml up -d
+```
+
+Note: we have turned off authentication in [src/main/docker/sonar.yml](docker/sonar.yml) for out of the box experience while trying out SonarQube, for real use cases turn it back on.
+
+You can run a Sonar analysis with using the [sonar-scanner](https://docs.sonarqube.org/display/SCAN/Analyzing+with+SonarQube+Scanner) or by using the maven plugin.
+
+Then, run a Sonar analysis:
+
+```
+./mvnw -Pprod clean verify sonar:sonar
+```
+
+If you need to re-run the Sonar phase, please be sure to specify at least the `initialize` phase since Sonar properties are loaded from the sonar-project.properties file.
+
+```
+./mvnw initialize sonar:sonar
+```
+
+For more information, refer to the [Code quality page][].
+
+## Using Docker to simplify development (optional)
+
+You can use Docker to improve your development experience. A number of docker-compose configuration are available in the [src/main/docker](docker) folder to launch required third party services.
+
+For example, to start a mongodb database in a docker container, run:
+
+```
+docker-compose -f src/main/docker/mongodb.yml up -d
+```
+
+To stop it and remove the container, run:
+
+```
+docker-compose -f src/main/docker/mongodb.yml down
+```
+
+You can also fully dockerize your application and all the services that it depends on.
+To achieve this, first build a docker image of your app by running:
+
+```
+./mvnw -Pprod verify jib:dockerBuild
+```
+
+Then run:
+
+```
+docker-compose -f src/main/docker/app.yml up -d
+```
