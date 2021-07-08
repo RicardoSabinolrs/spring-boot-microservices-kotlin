@@ -20,10 +20,8 @@ import javax.cache.expiry.Duration
 
 @Configuration
 @EnableCaching
-class CacheConfiguration(
-    @Autowired val gitProperties: GitProperties?,
-    @Autowired val buildProperties: BuildProperties?
-) {
+class CacheConfiguration(@Autowired val gitProperties: GitProperties?, @Autowired val buildProperties: BuildProperties?) {
+
     @Bean
     fun jcacheConfiguration(jHipsterProperties: JHipsterProperties): javax.cache.configuration.Configuration<Any, Any> {
         val jcacheConfig = MutableConfiguration<Any, Any>()
@@ -59,7 +57,6 @@ class CacheConfiguration(
     @Bean
     fun cacheManagerCustomizer(jcacheConfiguration: javax.cache.configuration.Configuration<Any, Any>): JCacheManagerCustomizer {
         return JCacheManagerCustomizer {
-            // jhipster-needle-redis-add-entry
         }
     }
 

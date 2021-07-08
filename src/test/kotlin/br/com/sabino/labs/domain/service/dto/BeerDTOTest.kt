@@ -13,6 +13,7 @@ class BeerDTOTest {
         val beerDTO1 = BeerDTO()
         beerDTO1.id = "id1"
         val beerDTO2 = BeerDTO()
+
         assertThat(beerDTO1).isNotEqualTo(beerDTO2)
         beerDTO2.id = beerDTO1.id
         assertThat(beerDTO1).isEqualTo(beerDTO2)

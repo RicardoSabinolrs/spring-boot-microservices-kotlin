@@ -47,9 +47,11 @@ class JWTFilterTest {
         val request = MockHttpServletRequest()
         request.addHeader(JWTFilter.AUTHORIZATION_HEADER, "Bearer $jwt")
         request.requestURI = "/api/test"
+
         val response = MockHttpServletResponse()
         val filterChain = MockFilterChain()
         jwtFilter.doFilter(request, response, filterChain)
+
         assertThat(response.status).isEqualTo(HttpStatus.OK.value())
         assertThat(SecurityContextHolder.getContext().authentication.name).isEqualTo("test-user")
         assertThat(SecurityContextHolder.getContext().authentication.credentials.toString()).hasToString(jwt)
@@ -62,9 +64,11 @@ class JWTFilterTest {
         val request = MockHttpServletRequest()
         request.addHeader(JWTFilter.AUTHORIZATION_HEADER, "Bearer $jwt")
         request.requestURI = "/api/test"
+
         val response = MockHttpServletResponse()
         val filterChain = MockFilterChain()
         jwtFilter.doFilter(request, response, filterChain)
+
         assertThat(response.status).isEqualTo(HttpStatus.OK.value())
         assertThat(SecurityContextHolder.getContext().authentication).isNull()
     }
@@ -75,9 +79,11 @@ class JWTFilterTest {
         val request = MockHttpServletRequest()
         request.addHeader(JWTFilter.AUTHORIZATION_HEADER, "Bearer ")
         request.requestURI = "/api/test"
+
         val response = MockHttpServletResponse()
         val filterChain = MockFilterChain()
         jwtFilter.doFilter(request, response, filterChain)
+
         assertThat(response.status).isEqualTo(HttpStatus.OK.value())
         assertThat(SecurityContextHolder.getContext().authentication).isNull()
     }
@@ -88,9 +94,11 @@ class JWTFilterTest {
         val request = MockHttpServletRequest()
         request.addHeader(JWTFilter.AUTHORIZATION_HEADER, "Bearer ")
         request.requestURI = "/api/test"
+
         val response = MockHttpServletResponse()
         val filterChain = MockFilterChain()
         jwtFilter.doFilter(request, response, filterChain)
+
         assertThat(response.status).isEqualTo(HttpStatus.OK.value())
         assertThat(SecurityContextHolder.getContext().authentication).isNull()
     }
@@ -107,9 +115,11 @@ class JWTFilterTest {
         val request = MockHttpServletRequest()
         request.addHeader(JWTFilter.AUTHORIZATION_HEADER, "Basic $jwt")
         request.requestURI = "/api/test"
+
         val response = MockHttpServletResponse()
         val filterChain = MockFilterChain()
         jwtFilter.doFilter(request, response, filterChain)
+
         assertThat(response.status).isEqualTo(HttpStatus.OK.value())
         assertThat(SecurityContextHolder.getContext().authentication).isNull()
     }

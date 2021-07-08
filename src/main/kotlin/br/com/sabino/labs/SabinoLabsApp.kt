@@ -18,12 +18,6 @@ class SabinoLabsApp(private val env: Environment) {
 
     private val log = LoggerFactory.getLogger(javaClass)
 
-    /**
-     * Initializes SabinoLabs.
-     *
-     * Spring profiles can be configured with a program argument --spring.profiles.active=your-active-profile
-     *
-     */
     @PostConstruct
     fun initApplication() {
         val activeProfiles = env.activeProfiles
@@ -46,11 +40,6 @@ class SabinoLabsApp(private val env: Environment) {
     }
 
     companion object {
-        /**
-         * Main method, used to run the application.
-         *
-         * @param args the command line arguments.
-         */
         @JvmStatic
         fun main(args: Array<String>) {
             val env = runApplication<SabinoLabsApp>(*args) { DefaultProfileUtil.addDefaultProfile(this) }.environment

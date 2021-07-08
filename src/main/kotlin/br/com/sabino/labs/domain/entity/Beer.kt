@@ -6,9 +6,6 @@ import org.springframework.data.mongodb.core.mapping.Field
 
 import java.io.Serializable
 
-/**
- * A Beer.
- */
 @Document(collection = "beer")
 data class Beer(
     @Id
@@ -28,11 +25,7 @@ data class Beer(
     @Field("alcohol_tenor")
     var alcoholTenor: String? = null,
 
-    // jhipster-needle-entity-add-field - JHipster will add fields here
-) : Serializable {
-
-
-    // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
+    ) : Serializable {
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true

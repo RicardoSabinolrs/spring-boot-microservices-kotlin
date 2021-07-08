@@ -9,10 +9,7 @@ import org.springframework.data.mongodb.core.mapping.Field
 import java.io.Serializable
 import java.time.Instant
 
-/**
- * Base abstract class for entities which will hold definitions for created, last modified by, created by,
- * last modified by attributes.
- */
+
 abstract class AbstractAuditingEntity(
 
     @CreatedBy
@@ -36,7 +33,6 @@ abstract class AbstractAuditingEntity(
     var lastModifiedDate: Instant? = Instant.now()
 
 ) : Serializable {
-
     companion object {
         private const val serialVersionUID = 1L
     }

@@ -12,9 +12,6 @@ import tech.jhipster.config.JHipsterProperties
 import javax.servlet.ServletContext
 import javax.servlet.ServletException
 
-/**
- * Configuration of web application with Servlet 3.0 APIs.
- */
 @Configuration
 class WebConfigurer(
 

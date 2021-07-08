@@ -11,6 +11,7 @@ data:
       replSetName: rs0
     storage:
       dbPath: /data/db
+
 ---
 apiVersion: v1
 kind: ConfigMap
@@ -149,6 +150,7 @@ data:
 
     shutdown_mongo
     log "Good bye."
+
 ---
 apiVersion: apps/v1
 kind: StatefulSet
@@ -307,6 +309,7 @@ spec:
           requests:
             storage: '1Gi'
         storageClassName: sabino-nfs
+
 ---
 # Headless service for DNS record
 apiVersion: v1

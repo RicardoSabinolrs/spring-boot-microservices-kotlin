@@ -1,6 +1,4 @@
 #!/bin/bash
-# Files are ordered in proper order with needed wait for the dependent custom resource definitions to get initialized.
-# Usage: bash kubectl-apply.sh
 
 usage(){
  cat << EOF
@@ -28,22 +26,22 @@ logSummary() {
 
 default() {
     suffix=k8s
-    kubectl apply -f namespace.yml
+    kubectl apply -f k8s/namespace/
     kubectl label namespace sabino-labs istio-injection=enabled --overwrite=true
-    kubectl apply -f sabinolabs-${suffix}/
-    kubectl apply -f monitoring-${suffix}/prometheus-crd.yml
+    kubectl apply -f k8s/application/
+    kubectl apply -f k8s/monitoring/prometheus-crd.yml
     until [ $(kubectl get crd prometheuses.monitoring.coreos.com 2>>/dev/null | wc -l) -ge 2 ]; do
         echo "Waiting for the custom resource prometheus operator to get initialised";
         sleep 5;
     done
-    kubectl apply -f monitoring-${suffix}/prometheus-cr.yml
-    kubectl apply -f monitoring-${suffix}/grafana.yml
-    kubectl apply -f monitoring-${suffix}/grafana-dashboard.yml
+    kubectl apply -f k8s/monitoring/prometheus-cr.yml
+    kubectl apply -f k8s/monitoring/grafana.yml
+    kubectl apply -f k8s/monitoring/grafana-dashboard.yml
 
 }
 
 kustomize() {
-    kubectl apply -k ./
+    kubectl apply -k ../
 }
 
 scaffold() {

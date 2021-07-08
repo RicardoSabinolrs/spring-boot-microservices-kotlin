@@ -4,7 +4,7 @@ commonLabels:
 namespace: sabino-labs
 
 resources:
-  - k8s/namespace.yml
+  - k8s/namespace/namespace.yml
   # Individual apps
   - k8s/application/deployment.yml
   - k8s/application/service.yml

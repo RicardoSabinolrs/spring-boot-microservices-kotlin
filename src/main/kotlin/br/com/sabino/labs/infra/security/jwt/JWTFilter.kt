@@ -9,10 +9,6 @@ import javax.servlet.ServletRequest
 import javax.servlet.ServletResponse
 import javax.servlet.http.HttpServletRequest
 
-/**
- * Filters incoming requests and installs a Spring Security principal if a header corresponding to a valid user is
- * found.
- */
 class JWTFilter(private val tokenProvider: TokenProvider) : GenericFilterBean() {
 
     @Throws(IOException::class, ServletException::class)

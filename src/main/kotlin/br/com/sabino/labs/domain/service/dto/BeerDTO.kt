@@ -3,9 +3,6 @@ package br.com.sabino.labs.domain.service.dto
 import java.io.Serializable
 import java.util.*
 
-/**
- * A DTO for the [br.com.sabino.labs.domain.Beer] entity.
- */
 data class BeerDTO(
     var id: String? = null,
     var name: String? = null,

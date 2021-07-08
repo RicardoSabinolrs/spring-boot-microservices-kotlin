@@ -14,6 +14,7 @@ class BeerTest {
         beer1.id = "id1"
         val beer2 = Beer()
         beer2.id = beer1.id
+
         assertThat(beer1).isEqualTo(beer2)
         beer2.id = "id2"
         assertThat(beer1).isNotEqualTo(beer2)

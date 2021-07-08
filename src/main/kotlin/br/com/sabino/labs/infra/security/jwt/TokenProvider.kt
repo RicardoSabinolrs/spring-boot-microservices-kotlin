@@ -16,7 +16,7 @@ import org.springframework.util.ObjectUtils
 import tech.jhipster.config.JHipsterProperties
 import java.nio.charset.StandardCharsets
 import java.security.Key
-import java.util.Date
+import java.util.*
 
 private const val AUTHORITIES_KEY = "auth"
 
@@ -24,13 +24,9 @@ private const val AUTHORITIES_KEY = "auth"
 class TokenProvider(private val jHipsterProperties: JHipsterProperties) {
 
     private val log = LoggerFactory.getLogger(javaClass)
-
     private var key: Key? = null
-
     private var jwtParser: JwtParser? = null
-
     private var tokenValidityInMilliseconds: Long = 0
-
     private var tokenValidityInMillisecondsForRememberMe: Long = 0
 
     init {
@@ -46,8 +42,7 @@ class TokenProvider(private val jHipsterProperties: JHipsterProperties) {
         this.key = Keys.hmacShaKeyFor(keyBytes)
         this.jwtParser = Jwts.parserBuilder().setSigningKey(key).build()
         this.tokenValidityInMilliseconds = 1000 * jHipsterProperties.security.authentication.jwt.tokenValidityInSeconds
-        this.tokenValidityInMillisecondsForRememberMe = 1000 * jHipsterProperties.security.authentication.jwt
-            .tokenValidityInSecondsForRememberMe
+        this.tokenValidityInMillisecondsForRememberMe = 1000 * jHipsterProperties.security.authentication.jwt.tokenValidityInSecondsForRememberMe
     }
 
     fun createToken(authentication: Authentication, rememberMe: Boolean): String {

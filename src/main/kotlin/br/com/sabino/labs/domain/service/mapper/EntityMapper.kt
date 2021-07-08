@@ -5,13 +5,6 @@ import org.mapstruct.MappingTarget
 import org.mapstruct.Named
 import org.mapstruct.NullValuePropertyMappingStrategy
 
-/**
- * Contract for a generic dto to entity mapper.
- *
- * @param D DTO type parameter.
- * @param E Entity type parameter.
- */
-
 interface EntityMapper<D, E> {
 
     fun toEntity(dto: D): E

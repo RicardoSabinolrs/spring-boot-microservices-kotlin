@@ -1,4 +1,4 @@
-# JHipster-generated Kubernetes configuration
+# Kubernetes configuration
 
 ## Preparation
 
@@ -67,14 +67,14 @@ Application metrics can be explored in Prometheus through,
 
 ```
 
-$ kubectl get svc jhipster-prometheus -n sabino-labs
+$ kubectl get svc prometheus -n sabino-labs
 
 ```
 
 Also the visualisation can be explored in Grafana which is pre-configured with a dashboard view. You can find the service details by
 ```
 
-$ kubectl get svc jhipster-grafana -n sabino-labs
+$ kubectl get svc grafana -n sabino-labs
 
 ```
 

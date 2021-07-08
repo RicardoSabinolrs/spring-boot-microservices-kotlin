@@ -29,28 +29,13 @@ private fun createObjectMapper() =
         registerModule(JavaTimeModule())
     }
 
-/**
- * Convert an object to JSON byte array.
- *
- * @param object the object to convert.
- * @return the JSON byte array.
- * @throws IOException
- */
 @Throws(IOException::class)
 fun convertObjectToJsonBytes(`object`: Any): ByteArray = mapper.writeValueAsBytes(`object`)
 
-/**
- * Create a byte array with a specific size filled with specified data.
- *
- * @param size the size of the byte array.
- * @param data the data to put in the byte array.
- * @return the JSON byte array.
- */
 fun createByteArray(size: Int, data: String) = ByteArray(size) { java.lang.Byte.parseByte(data, 2) }
+fun sameInstant(date: ZonedDateTime) = ZonedDateTimeMatcher(date)
+fun sameNumber(number: BigDecimal): NumberMatcher = NumberMatcher(number)
 
-/**
- * A matcher that tests that the examined string represents the same instant as the reference datetime.
- */
 class ZonedDateTimeMatcher(private val date: ZonedDateTime) : TypeSafeDiagnosingMatcher<String>() {
 
     override fun matchesSafely(item: String, mismatchDescription: Description): Boolean {
@@ -72,15 +57,6 @@ class ZonedDateTimeMatcher(private val date: ZonedDateTime) : TypeSafeDiagnosing
     }
 }
 
-/**
- * Creates a matcher that matches when the examined string represents the same instant as the reference datetime.
- * @param date the reference datetime against which the examined string is checked.
- */
-fun sameInstant(date: ZonedDateTime) = ZonedDateTimeMatcher(date)
-
-/**
-* A matcher that tests that the examined number represents the same value - it can be Long, Double, etc - as the reference BigDecimal.
-*/
 class NumberMatcher(private val value: BigDecimal) : TypeSafeMatcher<Number>() {
     override fun describeTo(description: Description) {
         description.appendText("a numeric value is ").appendValue(value)
@@ -107,36 +83,25 @@ class NumberMatcher(private val value: BigDecimal) : TypeSafeMatcher<Number>() {
     }
 }
 
-/**
-* Creates a matcher that matches when the examined number represents the same value as the reference BigDecimal.
-*
-* @param number the reference BigDecimal against which the examined number is checked.
-*/
-fun sameNumber(number: BigDecimal): NumberMatcher = NumberMatcher(number)
-
-/**
- * Verifies the equals/hashcode contract on the domain object.
- */
 fun <T : Any> equalsVerifier(clazz: KClass<T>) {
     val domainObject1 = clazz.createInstance()
     assertThat(domainObject1.toString()).isNotNull()
     assertThat(domainObject1).isEqualTo(domainObject1)
     assertThat(domainObject1).hasSameHashCodeAs(domainObject1)
+
     // Test with an instance of another class
     val testOtherObject = Any()
     assertThat(domainObject1).isNotEqualTo(testOtherObject)
     assertThat(domainObject1).isNotEqualTo(null)
+
     // Test with an instance of the same class
     val domainObject2 = clazz.createInstance()
     assertThat(domainObject1).isNotEqualTo(domainObject2)
+
     // HashCodes are equals because the objects are not persisted yet
     assertThat(domainObject1).hasSameHashCodeAs(domainObject2)
 }
 
-/**
- * Create a [FormattingConversionService] which use ISO date format, instead of the localized one.
- * @return the created [FormattingConversionService].
- */
 fun createFormattingConversionService(): FormattingConversionService {
     val dfcs = DefaultFormattingConversionService()
     val registrar = DateTimeFormatterRegistrar()

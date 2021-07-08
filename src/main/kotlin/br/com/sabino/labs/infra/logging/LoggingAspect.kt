@@ -11,12 +11,6 @@ import org.springframework.core.env.Environment
 import org.springframework.core.env.Profiles
 import tech.jhipster.config.JHipsterConstants
 
-/**
- * Aspect for logging execution of service and repository Spring components.
- *
- * By default, it only runs with the "dev" profile.
- */
-@Suppress("unused")
 @Aspect
 open class LoggingAspect(private val env: Environment) {
 

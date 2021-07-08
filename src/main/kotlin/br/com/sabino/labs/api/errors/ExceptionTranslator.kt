@@ -1,7 +1,6 @@
 package br.com.sabino.labs.api.errors
 
 import org.apache.commons.lang3.StringUtils
-import org.springframework.beans.factory.annotation.Value
 import org.springframework.core.env.Environment
 import org.springframework.dao.ConcurrencyFailureException
 import org.springframework.dao.DataAccessException
@@ -11,11 +10,7 @@ import org.springframework.web.bind.MethodArgumentNotValidException
 import org.springframework.web.bind.annotation.ControllerAdvice
 import org.springframework.web.bind.annotation.ExceptionHandler
 import org.springframework.web.context.request.NativeWebRequest
-import org.zalando.problem.DefaultProblem
-import org.zalando.problem.Problem
-import org.zalando.problem.ProblemBuilder
-import org.zalando.problem.Status
-import org.zalando.problem.StatusType
+import org.zalando.problem.*
 import org.zalando.problem.spring.web.advice.ProblemHandling
 import org.zalando.problem.spring.web.advice.security.SecurityAdviceTrait
 import org.zalando.problem.violations.ConstraintViolationProblem
@@ -29,19 +24,11 @@ private const val MESSAGE_KEY = "message"
 private const val PATH_KEY = "path"
 private const val VIOLATIONS_KEY = "violations"
 
-/**
- * Controller advice to translate the server side exceptions to client-friendly json structures.
- * The error response follows RFC7807 - Problem Details for HTTP APIs (https://tools.ietf.org/html/rfc7807).
- */
 @ControllerAdvice
 class ExceptionTranslator(private val env: Environment) : ProblemHandling, SecurityAdviceTrait {
 
-    @Value("\${jhipster.clientApp.name}")
-    private val applicationName: String? = null
+    private var applicationName: String = "sabinoLabsBeer"
 
-    /**
-     * Post-process the Problem payload to add the message key for the front-end if needed.
-     */
     override fun process(entity: ResponseEntity<Problem>?, request: NativeWebRequest?): ResponseEntity<Problem>? {
         if (entity == null) {
             return null

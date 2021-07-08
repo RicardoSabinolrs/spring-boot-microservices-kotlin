@@ -8,9 +8,6 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.authority.SimpleGrantedAuthority
 import org.springframework.security.core.context.SecurityContextHolder
 
-/**
- * Test class for the Security Utility methods.
- */
 class SecurityUtilsUnitTest {
     @BeforeEach
     @AfterEach
@@ -62,7 +59,7 @@ class SecurityUtilsUnitTest {
         securityContext.authentication = UsernamePasswordAuthenticationToken("user", "user", authorities)
         SecurityContextHolder.setContext(securityContext)
 
-        assertThat(hasCurrentUserThisAuthority(USER)).isTrue()
-        assertThat(hasCurrentUserThisAuthority(ADMIN)).isFalse()
+        assertThat(hasCurrentUserThisAuthority(USER)).isTrue
+        assertThat(hasCurrentUserThisAuthority(ADMIN)).isFalse
     }
 }

@@ -5,7 +5,6 @@
     <include resource="org/springframework/boot/logging/logback/base.xml"/>
 
     <logger name="br.com.sabino.labs" level="INFO"/>
-
     <logger name="javax.activation" level="WARN"/>
     <logger name="javax.mail" level="WARN"/>
     <logger name="javax.xml.bind" level="WARN"/>

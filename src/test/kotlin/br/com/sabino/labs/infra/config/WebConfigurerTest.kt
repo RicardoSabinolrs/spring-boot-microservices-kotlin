@@ -5,9 +5,7 @@ import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.mockito.ArgumentMatchers.any
 import org.mockito.ArgumentMatchers.anyString
-import org.mockito.Mockito.doReturn
-import org.mockito.Mockito.mock
-import org.mockito.Mockito.spy
+import org.mockito.Mockito.*
 import org.springframework.http.HttpHeaders
 import org.springframework.mock.env.MockEnvironment
 import org.springframework.mock.web.MockServletContext
@@ -19,23 +17,13 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders
 import org.springframework.test.web.servlet.setup.StandaloneMockMvcBuilder
 import tech.jhipster.config.JHipsterConstants
 import tech.jhipster.config.JHipsterProperties
-import javax.servlet.Filter
-import javax.servlet.FilterRegistration
-import javax.servlet.Servlet
-import javax.servlet.ServletException
-import javax.servlet.ServletRegistration
+import javax.servlet.*
 
-/**
- * Unit tests for the [WebConfigurer] class.
- */
 class WebConfigurerTest {
 
     private lateinit var webConfigurer: WebConfigurer
-
     private lateinit var servletContext: MockServletContext
-
     private lateinit var env: MockEnvironment
-
     private lateinit var props: JHipsterProperties
 
     @BeforeEach
@@ -101,8 +89,8 @@ class WebConfigurerTest {
             get("/api/test-cors")
                 .header(HttpHeaders.ORIGIN, "other.domain.com")
         )
-            .andExpect(status().isOk)
-            .andExpect(header().string(HttpHeaders.ACCESS_CONTROL_ALLOW_ORIGIN, "other.domain.com"))
+        .andExpect(status().isOk)
+        .andExpect(header().string(HttpHeaders.ACCESS_CONTROL_ALLOW_ORIGIN, "other.domain.com"))
     }
 
     @Test
@@ -122,8 +110,8 @@ class WebConfigurerTest {
             get("/test/test-cors")
                 .header(HttpHeaders.ORIGIN, "other.domain.com")
         )
-            .andExpect(status().isOk)
-            .andExpect(header().doesNotExist(HttpHeaders.ACCESS_CONTROL_ALLOW_ORIGIN))
+        .andExpect(status().isOk)
+        .andExpect(header().doesNotExist(HttpHeaders.ACCESS_CONTROL_ALLOW_ORIGIN))
     }
 
     @Test
@@ -139,8 +127,8 @@ class WebConfigurerTest {
             get("/api/test-cors")
                 .header(HttpHeaders.ORIGIN, "other.domain.com")
         )
-            .andExpect(status().isOk)
-            .andExpect(header().doesNotExist(HttpHeaders.ACCESS_CONTROL_ALLOW_ORIGIN))
+        .andExpect(status().isOk)
+        .andExpect(header().doesNotExist(HttpHeaders.ACCESS_CONTROL_ALLOW_ORIGIN))
     }
 
     @Test
@@ -156,7 +144,7 @@ class WebConfigurerTest {
             get("/api/test-cors")
                 .header(HttpHeaders.ORIGIN, "other.domain.com")
         )
-            .andExpect(status().isOk)
-            .andExpect(header().doesNotExist(HttpHeaders.ACCESS_CONTROL_ALLOW_ORIGIN))
+        .andExpect(status().isOk)
+        .andExpect(header().doesNotExist(HttpHeaders.ACCESS_CONTROL_ALLOW_ORIGIN))
     }
 }

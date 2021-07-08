@@ -11,8 +11,7 @@ open class BadRequestAlertException(type: URI, defaultMessage: String, val entit
         getAlertParameters(entityName, errorKey)
     ) {
 
-    constructor(defaultMessage: String, entityName: String, errorKey: String) :
-        this(DEFAULT_TYPE, defaultMessage, entityName, errorKey)
+    constructor(defaultMessage: String, entityName: String, errorKey: String) : this(DEFAULT_TYPE, defaultMessage, entityName, errorKey)
 
     override fun getCause(): Exceptional? = super.cause
 

@@ -10,9 +10,6 @@ import tech.jhipster.config.logging.LoggingUtils.addContextListener
 import tech.jhipster.config.logging.LoggingUtils.addJsonConsoleAppender
 import tech.jhipster.config.logging.LoggingUtils.addLogstashTcpSocketAppender
 
-/*
- * Configures the console and Logstash log appenders from the app properties.
- */
 @Configuration
 class LoggingConfiguration(
     @Value("\${spring.application.name}") appName: String,

@@ -6,13 +6,8 @@ import org.springframework.security.core.Authentication
 import org.springframework.security.core.GrantedAuthority
 import org.springframework.security.core.context.SecurityContextHolder
 import org.springframework.security.core.userdetails.UserDetails
-import java.util.Optional
+import java.util.*
 
-/**
- * Get the login of the current user.
- *
- * @return the login of the current user.
- */
 fun getCurrentUserLogin(): Optional<String> =
     Optional.ofNullable(extractPrincipal(SecurityContextHolder.getContext().authentication))
 
@@ -29,21 +24,11 @@ fun extractPrincipal(authentication: Authentication?): String? {
     }
 }
 
-/**
- * Get the JWT of the current user.
- *
- * @return the JWT of the current user.
- */
 fun getCurrentUserJWT(): Optional<String> =
     Optional.ofNullable(SecurityContextHolder.getContext().authentication)
         .filter { it.credentials is String }
         .map { it.credentials as String }
 
-/**
- * Check if a user is authenticated.
- *
- * @return true if the user is authenticated, false otherwise.
- */
 fun isAuthenticated(): Boolean {
     val authentication = SecurityContextHolder.getContext().authentication
 
@@ -57,12 +42,6 @@ fun isAuthenticated(): Boolean {
     return false
 }
 
-/**
- * Checks if the current user has a specific authority.
- *
- * @param authority the authority to check.
- * @return true if the current user has the authority, false otherwise.
- */
 fun hasCurrentUserThisAuthority(authority: String): Boolean {
     val authentication = SecurityContextHolder.getContext().authentication
 
